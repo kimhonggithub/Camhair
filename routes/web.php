@@ -16,10 +16,14 @@ use App\Http\Livewire\Admin\AdminHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
+use App\Http\Livewire\BlogComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\CheckoutComponent;
+use App\Http\Livewire\ContactComponent;
+use App\Http\Livewire\CustomizeOrderComponent;
 use App\Http\Livewire\DetailsProductComponent;
 use App\Http\Livewire\SearchComponent;
+use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use Illuminate\Support\Facades\Route;
 
@@ -42,8 +46,14 @@ Route::get('/',HomeComponent::class);
 Route::get('/cart',CartComponent::class)->name('product.cart');
 Route::get('/checkout',CheckoutComponent::class)->name('checkout');
 Route::get('/details_product/{slug}',DetailsProductComponent::class)->name('product.details');
-Route::get('/product_category/{category_slug}',CategoryComponent::class)->name('product.category');
+
 Route::get('/search',SearchComponent::class)->name('search.product');
+Route::get('/shop',ShopComponent::class)->name('shopping');
+Route::get('/shop/{category_slug}',CategoryComponent::class)->name('product.category');
+Route::get('/blog',BlogComponent::class)->name('blog');
+Route::get('/contact',ContactComponent::class)->name('contact');
+Route::get('/order',CustomizeOrderComponent::class)->name('customize.order');
+Route::get('/history',BlogComponent::class)->name('product.order');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
 // })->name('dashboard');

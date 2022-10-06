@@ -1,153 +1,262 @@
+<style>
+* {
+    box-sizing: border-box;
+}
 
-<main>
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active custom_cur">
-      <div class="row align-items-center">
-              <div class="col-6 desc_ban">
-                <h1 class="ban_head">Red Shirt</h1>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas similique quod, iste adipisci, ad ipsam dolor ducimus magni nam, explicabo deleniti. Sit suscipit placeat quibusdam molestiae veniam dolores esse reprehenderit!</p>
-                <h2>$120</h2>
-                <button type="button" class="btn btn_custom">Buy Now</button>
-              </div>
-              <div class="col-md-5">
-                <img src="{{asset('image/1.png')}}" class=" w-100 ban_img" alt="...">
-             </div>
-      </div> 
-      </div>
-      <div class="carousel-item custom_cur">
-      <div class="row align-items-center">
-              <div class="col-6 desc_ban">
-                <h1 class="ban_head">Red Shirt</h1>
-                <p>isci, ad ipsam dolor ducimus magni nam, explicabo deleniti. Sit suscipit placeat quibusdam molestiae veniam dolores esse reprehenderit!</p>
-                <h2>$120</h2>
-                <button type="button" class="btn btn_custom">Buy Now</button>
-              </div>
-              <div class="col-md-5">
-                <img src="{{asset('image/1.png')}}" class=" w-100 ban_img" alt="...">
-             </div>
-      </div>
-      </div>
-      <div class="carousel-item custom_cur">
-      <div class="row align-items-center">
-              <div class="col-6 desc_ban">
-                <h1 class="ban_head">Red Shirt</h1>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas similique quod, iste adipisci, ad ipsam dolor ducimus magni nam, explicabo deleniti. Sit suscipit placeat quibusdam molestiae veniam dolores esse reprehenderit!</p>
-                <h2>$120</h2>
-                <button type="button" class="btn btn_custom">Buy Now</button>
-              </div>
-              <div class="col-md-5">
-                <img src="{{asset('image/1.png')}}" class=" w-100 ban_img" alt="...">
-             </div>
-      </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+.bg-blog {
+    font-family: "Times New Roman", Times, serif;
+    padding: 20px;
+    background: #f1f1f1;
+}
 
-  <div class="product_type">
-  <div class="dropdown">
-      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        All Categories
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      @foreach ($categories as $category)
-        <li><a class="dropdown-item" href="{{route('product.category',['category_slug'=>$category->slug])}}">{{$category->name}}</a></li>
-      @endforeach
-      </ul>
-  </div>
-  <div class="p_w50">
-    <select name="" class="sort_product" wire:model="sorting">
-      <option value="default" selected>Default Sorting</option>
-      <option value="date">Sort by NewItem</option>
-      <option value="price_desc">Sort by price(High to Low)</option>
-      <option value="price">Sort by price(Low to high)</option>
-    </select>
-  </div>
-  <div>
-  <select name="" class="sort_product" wire:model="pagesize">
-      <option value="16" selected>16 item per page</option>
-      <option value="12">12 item per page</option>
-      <option value="8">8 item per page</option>
-      <option value="20">20 item per page</option>
-      <option value="28">28 item per page</option>
-    </select>
-  </div>
-  </div>
+/* Header/Blog Title */
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+    float: left;
+    width: 75%;
+}
 
-  <div class="container"> 
+/* Right column */
+.rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.btn-toggle-nav a {
+    display: inline-flex;
+    padding: .1875rem .5rem;
+    margin-top: .125rem;
+    margin-left: 1.25rem;
+    text-decoration: none;
+}
+
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+    background-color: #d2f4ea;
+}
+
+/* Footer */
+#intro {
+    /* Margin to fix overlapping fixed navbar */
+    margin-top: 58px;
+}
+
+@media (max-width: 991px) {
+    #intro {
+        /* Margin to fix overlapping fixed navbar */
+        margin-top: 45px;
+    }
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+
+    .leftcolumn,
+    .rightcolumn {
+        width: 100%;
+        padding: 0;
+    }
+}
+</style>
+<main class="container pt-5">
+
+
     <div class="row">
 
-        @foreach($products as $product)
-        <div class="col-md-3 col-sm-6">
-            <div class="product-grid">
-                <div class="product-image">
-                    <a href="{{route('product.details',['slug'=>$product->slug])}}">
-                        <img class="pic-1" src="{{asset('image')}}/{{$product->image}}">
-                        
-                    </a>
-                    <ul class="social">
-                        <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                        <li><a href="" data-tip="Add to Cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->sale_price}})"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                    <span class="product-new-label">{{$product->stock_status}}</span>
-                    <span class="product-discount-label">20%</span>
+        <div class="rightcolumn">
+            <span class="mb-auto">
+                <a href="">Shop/All Product</a>
+            </span>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <div class="card">
+
+                <h3 class="headline">
+                    Color
+                </h3>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_1" value="" checked="">
+                    <label for="shop-filter-price_1">Natural Brown</label>
                 </div>
-                
-                <div class="product-content">
-                    <h3 class="title"><a href="{{route('product.details',['slug'=>$product->slug])}}">{{$product->name}}</a></h3>
-                    <div class="price">${{$product->sale_price}}
-                        <span>${{$product->reguler_price}}</span>
-                    </div>
-                    <a class="add-to-cart" href="" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->sale_price}})">+ Add To Cart</a>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_2" value="">
+                    <label for="shop-filter-price_2">Natural black</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_3" value="">
+                    <label for="shop-filter-price_3">Natural grey</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_4" value="specify">
+                    <label for="shop-filter-price_4">Jetblack</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_4" value="specify">
+                    <label for="shop-filter-price_4">Brown</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_4" value="specify">
+                    <label for="shop-filter-price_4">Ombre</label>
+                </div>
+            </div>
+            <div class="card">
+
+                <h3 class="headline">
+                    Length (inch)
+                </h3>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_1" value="" checked="">
+                    <label for="shop-filter-price_1">10" to 15"</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_2" value="">
+                    <label for="shop-filter-price_2">15" to 20"</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_3" value="">
+                    <label for="shop-filter-price_3">20" to 25"</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_4" value="specify">
+                    <label for="shop-filter-price_4">25" to 30"</label>
+                </div>
+            </div>
+            <div class="card">
+
+                <h3 class="headline">
+                    Size
+                </h3>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_1" value="" checked="">
+                    <label for="shop-filter-price_1">Under $25</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_2" value="">
+                    <label for="shop-filter-price_2">$25 to $50</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_3" value="">
+                    <label for="shop-filter-price_3">$50 to $100</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="shop-filter__price" id="shop-filter-price_4" value="specify">
+                    <label for="shop-filter-price_4">Other (specify)</label>
                 </div>
             </div>
         </div>
-        @endforeach
-        
-    
+        <div class="leftcolumn">
+            <ul class="nav justify-content-end">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-expanded="false">Category</a>
+                    <ul class="dropdown-menu">
+                        @foreach ($categories as $category)
+                        <li><a class="dropdown-item"
+                                href="{{route('product.category',['category_slug'=>$category->slug])}}">{{$category->name}}</a>
+                        </li>
+                        @endforeach
+                        
+                        <li><a class="dropdown-item" href="#!">Customize Order</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-expanded="false">Pattern</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-expanded="false">Luster</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <div class="container">
+                <div class="row">
+                    @foreach($products as $product)
+                    <div class="col-sm-4">
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="{{route('product.details',['slug'=>$product->slug])}}">
+                                    <img class="pic-1" src="{{asset('image')}}/{{$product->image}}">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="{{route('product.details',['slug'=>$product->slug])}}"
+                                            data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                                    <li><a href="" data-tip="checkout with cart"
+                                            wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->sale_price}})"><i
+                                                class="fas fa-shopping-bag"></i></a></li>
+                                    <li><a href="" data-tip="Add to Cart"
+                                            wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->sale_price}})"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">{{$product->stock_status}}</span>
+                                <span class="product-discount-label">{{$product->discount}}%</span>
+                            </div>
+
+                            <div class="product-content">
+                                <h3 class="title"><a
+                                        href="{{route('product.details',['slug'=>$product->slug])}}">{{$product->name}}</a>
+                                </h3>
+                                <div class="price">${{$product->sale_price}}
+                                    <span>${{$product->reguler_price}}</span>
+                                </div>
+                                <a class="add-to-cart" href=""
+                                    wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->sale_price}})">+
+                                    Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="wrap-pagination-info">
+                    {{$products->links()}}
+                </div>
+
+            </div>
+        </div>
+
     </div>
-    <div class="wrap-pagination-info">
-        {{$products->links()}}
-    </div>
 
-
-
-
-<div class="bannerr container">
-  <div>
-    <h1 class="bannerr_head">Get Our special discount</h1>
-  </div>
-  <p class="bannerr_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis tempora ab officia similique maxime quae mollitia labore ratione voluptatibus, laborum voluptas repudiandae exercitationem reprehenderit omnis tenetur veniam harum, suscipit, a eius architecto quisquam velit! Neque unde ut magni porro similique?</p>
-  <div class="email_send">
-    <form class="d-flex ">
-      <input class="email_write" type="search" placeholder="Write Email" aria-label="Search">
-      <button class="btn btn_cus" type="submit">Send</button>
-    </form>
-  </div>
-</div>
-
-
-<div class="conn">
-  <h5 class="connh1">keep connected with us</h5>
-  <div class="conn_ico">
-    <i class="fab fa-facebook-f ico_1"></i>
-    <i class="connec fab fa-twitter"></i>
-    <i class="connec fab fa-linkedin-in"></i>
-    <i class="connec fab fa-instagram-square"></i>
-  </div>
-</div>
 </main>
