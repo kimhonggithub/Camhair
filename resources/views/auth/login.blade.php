@@ -1,6 +1,6 @@
 
 
-<x-guest-layout>
+<x-base-layout>
      <div class="container">
         
         <div class="login_center">
@@ -31,7 +31,7 @@
         </div>
 </div>
     
-</x-guest-layout>
+</x-base-layout>
 <!-- login -->
 
 <!-- <div class="container">

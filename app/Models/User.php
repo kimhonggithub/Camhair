@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
+use Storage;
 
 class User extends Authenticatable
 {
@@ -18,6 +20,8 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    const ROLE_ADMIN = 'ADM';
+    const ROLE_USER = 'USR';
     /**
      * The attributes that are mass assignable.
      *
@@ -27,6 +31,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'utype',
     ];
 
     /**
@@ -58,4 +64,18 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    public function getAvatarUrlAttribute()
+    {
+     
+        if($this->avatar && Storage::disk('avatars')->exists($this->avatar)){
+            return Storage::disk('avatars')->url($this->avatar);
+        }
+        return Auth::user()->name ;
+    }
+    public function isAdmin(){
+        if($this->utype !== self::ROLE_ADMIN){
+            return false;
+        }
+        return true;
+    }
 }

@@ -92,6 +92,7 @@
                 @endif
                 @else
                 <a type="button" class="btn btn-outline-primary" href="{{route('login')}}">Log in</a>
+                
                 <!-- <a class="log_in_link" href="{{route('login')}}">Log In</a> -->
                 <!-- <a class="log_in_link" href="{{route('register')}}">Register</a> -->
                 @endif
