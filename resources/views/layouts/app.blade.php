@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     @stack('styles')
     <livewire:styles />
 </head>
@@ -40,8 +40,8 @@
         @include('layouts.partials.footer')
     </div>
     <!-- ./wrapper -->
-    <script src="/js/app.js"></script>
-    <script src="/js/backend.js"></script>
+    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('js/backend.js')}}"></script>
     @stack('js')
     @stack('before-livewire-scripts')
     <livewire:scripts />

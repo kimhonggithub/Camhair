@@ -1,4 +1,160 @@
+@push('style_content')
+<style>
+    main {
+        font-family: "Times New Roman", Times, serif;
+    }
 
+    .masthead {
+        height: 100vh;
+        min-height: 500px;
+        background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: "Times New Roman", Times, serif;
+    }
+
+
+    .img-5r {
+        opacity: 1;
+        display: block;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .tx-5 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 20px;
+    }
+
+    .middle {
+
+        transition: 1s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .hover-img:hover .img-5r {
+        opacity: 0.5;
+    }
+
+    .hover-img:hover .middle {
+        opacity: 1;
+        color: black;
+        font-size: 20px;
+    }
+
+    .middle:hover {
+        text-decoration: underline;
+        color: black;
+    }
+
+    .btn-shop {
+        border-radius: 50px;
+        background-color: #103E3F;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 20px;
+        padding: 12px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    .btn-shop span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    .btn-shop span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    .btn-shop:hover span {
+        padding-right: 25px;
+    }
+
+    .btn-shop:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+
+    /*  */
+    .wrap-see {
+
+        border: none;
+        color: black;
+        text-align: center;
+        font-size: 20px;
+        padding: 12px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    .wrap-see span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    .wrap-see span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    .wrap-see:hover span {
+        padding-right: 25px;
+    }
+
+    .wrap-see:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+
+    /*  */
+
+    .disc {
+        font-family: "Times New Roman", Times, serif;
+        border-bottom: 3px solid #103E3F;
+        width: fit-content;
+    }
+
+    .disc::before {
+        content: "";
+    }
+
+    .disc::after {
+        position: relative;
+        content: "";
+        width: 50%;
+        display: block;
+        border-bottom: 3px solid #103E3F;
+        top: 8px;
+    }
+    </style>
+@endpush
 <main>
     <header class="masthead">
         <div class="container h-100">
@@ -41,7 +197,7 @@
     <section class="py-5">
         <div class="container">
             <h2 class="fw-light disc">Discover for you</h2>
-            <!-- <div class="row">
+            <div class="row">
                 @foreach($products->take(4) as $product)
                 <div class="col-md-3 col-sm-6">
                     <div class="product-grid">
@@ -77,31 +233,11 @@
                     </div>
                 </div>
                 @endforeach
-            </div> -->
+            </div>
 
             <div class="py-5 row row-cols-1 row-cols-md-2 g-4">
                
-                @foreach ($categories as $category)
-                        <div class="col">
-                            <div class="flip-card">
-                            <a  href="{{route('product.category',['category_slug'=>$category->slug])}}">
-                                <div class="flip-card-inner">
-                                
-                                    <div class="flip-card-front">
-                                        
-                                        <img src="{{asset('image/slider/Blend.jpg')}}" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-                                    
-                                    <div class="flip-card-back">
-                                        <h1>{{$category->name}}</h1>
-                                    </div>
-                                    
-                                </div>
-                                </a>
-                            </div>
-                        </div>
-
-                    @endforeach
+             
                 
             </div>
 

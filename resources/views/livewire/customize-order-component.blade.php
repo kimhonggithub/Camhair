@@ -116,11 +116,6 @@
         <div class="wrap-pagination-info">
             {{$products->links()}}
         </div>
-
-
-
-
-
     </div>
 
 

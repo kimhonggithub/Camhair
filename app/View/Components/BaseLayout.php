@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Blade;
 use Illuminate\View\Component;
 
 class BaseLayout extends Component
@@ -13,6 +14,8 @@ class BaseLayout extends Component
      */
     public function render()
     {
+      
         return view('layouts.base');
+
     }
 }

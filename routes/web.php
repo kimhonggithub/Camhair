@@ -1,39 +1,42 @@
 <?php
 
 use App\Http\Livewire\Admin\Product\Category\AdminAddCategoryComponent;
-use App\Http\Livewire\Admin\Pages\AdminAddHomeSliderComponent;
-use App\Http\Livewire\Admin\Product\Products\AdminAddProductComponent;
 use App\Http\Livewire\Admin\Product\Category\AdminCategoryComponent;
+use App\Http\Livewire\Admin\Product\Category\AdminDeleteCategoryComponent;
+use App\Http\Livewire\Admin\Product\Category\AdminEditCategoryComponent;
+
+use App\Http\Livewire\Admin\Pages\AdminAddHomeSliderComponent;
+use App\Http\Livewire\Admin\Pages\AdminEditHomeSliderComponent;
+use App\Http\Livewire\Admin\Pages\AdminHomeSliderComponent;
+
+use App\Http\Livewire\Admin\Product\Products\AdminAddProductComponent;
+use App\Http\Livewire\Admin\Product\Products\AdminEditProductComponent;
+use App\Http\Livewire\Admin\Product\Products\AdminProductComponent;
+
+
+use App\Http\Livewire\Admin\Order\AdminOrderComponent;
+use App\Http\Livewire\Admin\Order\AdminOrderDetailsComponent;
+
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\user\UserDashboardComponent;
-use App\Http\Livewire\admin\AdminDashboardComponent;
-use App\Http\Livewire\Admin\Product\Category\AdminDeleteCategoryComponent;
-use App\Http\Livewire\Admin\Product\Category\AdminEditCategoryComponent;
-use App\Http\Livewire\Admin\Pages\AdminEditHomeSliderComponent;
-use App\Http\Livewire\Admin\Product\Products\AdminEditProductComponent;
-use App\Http\Livewire\Admin\Pages\AdminHomeSliderComponent;
-use App\Http\Livewire\Admin\Order\AdminOrderComponent;
-use App\Http\Livewire\Admin\Order\AdminOrderDetailsComponent;
-use App\Http\Livewire\Admin\Product\Products\AdminProductComponent;
+
 use App\Http\Livewire\BlogComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\CustomizeOrderComponent;
-use App\Http\Livewire\DetailsProductComponent;
+use App\Http\Livewire\FrontEnd\Shop\DetailsProductComponent;
 use App\Http\Livewire\SearchComponent;
-use App\Http\Livewire\ShopComponent;
+use App\Http\Livewire\FrontEnd\Shop\ShopComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Livewire\Analytics;
-
 use App\Http\Livewire\Admin\Users\ListUsers;
 use App\Http\Livewire\Admin\Profile\UpdateProfile;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\HomeContoller;
 use App\Http\Livewire\Admin\Appointments\ListAppointments;
 use App\Http\Livewire\Admin\Appointments\CreateAppointmentForm;
 use App\Http\Livewire\Admin\Appointments\UpdateAppointmentForm;
@@ -41,6 +44,13 @@ use App\Http\Livewire\Admin\Messages\ListConversationAndMessages;
 use App\Http\Livewire\Admin\Settings\UpdateSetting;
 
 
+use App\Http\Livewire\admin\AdminDashboardComponent;
+use App\Http\Controllers\HomeContoller;
+use App\Http\Livewire\Admin\Product\Products\Closure\AdminAddClosureComponent;
+use App\Http\Livewire\Admin\Product\Products\Closure\AdminClosureComponent;
+use App\Http\Livewire\Frontend\Shop\ClosureComponent;
+use App\Models\Category;
+use Illuminate\Foundation\Console\ClosureCommand;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +74,20 @@ Route::get('/details_product/{slug}',DetailsProductComponent::class)->name('prod
 
 Route::get('/search',SearchComponent::class)->name('search.product');
 Route::get('/shop',ShopComponent::class)->name('shopping');
-Route::get('/shop/{category_slug}',CategoryComponent::class)->name('product.category');
+
+ Route::get('/shop/{category_slug}',CategoryComponent::class)->name('product.category');
+Route::get('/shop/category/closure',ClosureComponent::class)->name('closure');
+
+
+
+
+// Route::get('/shop/{category_slug}', 'StaticController@index')->where('slug', 'faq|contact|something');
+
+// Route::get('/shop/{category_slugs}',ClosureComponent::class)->where('{category_slugs','closure');
+
+Route::get('/shop/closure',ClosureComponent::class);
+
+
 Route::get('/blog',BlogComponent::class)->name('blog');
 Route::get('/contact',ContactComponent::class)->name('contact');
 Route::get('/order',CustomizeOrderComponent::class)->name('customize.order');
@@ -79,13 +102,23 @@ Route::middleware(['auth:sanctum','verified'])->group(function(){
 });
 
     Route::get('/admin/dashboard',DashboardController::class)->name('admin.dashboard'); 
+    
     Route::get('/admin/categories',AdminCategoryComponent::class)->name('admin.category');
     Route::get('/admin/category/add',AdminAddCategoryComponent::class)->name('admin.categoryAdd');
     Route::get('/admin/category/edit/{category_slug}',AdminEditCategoryComponent::class)->name('admin.categoryEdit');
     Route::get('/admin/category/delete/{category_id}',AdminDeleteCategoryComponent::class)->name('admin.categoryDelete');
+    
+    // Admin add product
     Route::get('/admin/products',AdminProductComponent::class)->name('admin.products');
     Route::get('/admin/products/add',AdminAddProductComponent::class)->name('admin.productsAdd');
     Route::get('/admin/products/edit/{product_slug}',AdminEditProductComponent::class)->name('admin.productsEdit');
+
+    // Admin add closure
+    Route::get('/admin/prodcuts/closure',AdminClosureComponent::class)->name('admin.prodcutsclosure');
+    Route::get('/admin/prodcuts/closure/add',AdminAddClosureComponent::class)->name('admin.prodcutsclosureadd');
+
+
+
     Route::get('/admin/slider',AdminHomeSliderComponent::class)->name('admin.slider');
     Route::get('/admin/slider/add',AdminAddHomeSliderComponent::class)->name('admin.addSlider');
     Route::get('/admin/slider/edit/{slider_id}',AdminEditHomeSliderComponent::class)->name('admin.editSlider');

@@ -155,3 +155,61 @@ $(document).ready(function() {
 });
 // jquery end
 </script>
+
+
+
+
+shoping page
+ @foreach($categories as $category)
+    <a class="card1" href="{{route('product.category',['category_slug'=>$category->slug])}}">
+        <h3>{{$category->name}}</h3>
+        <p class="small">Card description with lots of great facts and interesting details.</p>
+        <div class="go-corner" href="#">
+            <div class="go-arrow">
+                →
+            </div>
+        </div>
+    </a>
+    @endforeach
+
+
+
+
+
+
+    <a class="card1" href="{{route('product.category.wefted')}}">
+        <h3>Wefted Hair</h3>
+        <p class="small">Card description with lots of great facts and interesting details.</p>
+        <div class="go-corner" href="#">
+            <div class="go-arrow">
+                →
+            </div>
+        </div>
+    </a>
+    <a class="card1" href="{{route('product.category.frontal')}}">
+        <h3>Frontal Hair</h3>
+        <p class="small">Card description with lots of great facts and interesting details.</p>
+        <div class="go-corner" href="#">
+            <div class="go-arrow">
+                →
+            </div>
+        </div>
+    </a>
+    <a class="card1" href="{{route('product.category.wig')}}">
+        <h3>Wig Hair</h3>
+        <p class="small">Card description with lots of great facts and interesting details.</p>
+        <div class="go-corner" href="#">
+            <div class="go-arrow">
+                →
+            </div>
+        </div>
+    </a>
+    <a class="card1" href="{{route('product.category.blend')}}">
+        <h3>Blend Hair</h3>
+        <p class="small">Card description with lots of great facts and interesting details.</p>
+        <div class="go-corner" href="#">
+            <div class="go-arrow">
+                →
+            </div>
+        </div>
+    </a>

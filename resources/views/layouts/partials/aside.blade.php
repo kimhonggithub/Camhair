@@ -44,6 +44,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                   
                         <li class="nav-item">
                             <a href="{{ route('admin.category') }}" class="nav-link {{ request()->is('admin/categories') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>

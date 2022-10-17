@@ -14,10 +14,10 @@ margin-left: 30px;
     width: 80px;
 }
 .lo_go{
-    color: #0aa57c;
+    color: #103E3F;
 }
 .log_in{
-    background-color: #00EEAD;
+    background-color: #103E3F;
     float: right;
     height: 25px;
     width: 100%;
@@ -49,7 +49,7 @@ nav{
     background-color: #EBEBE9;
 }
 .ban_head{
-    color: #0bc996;
+    color: #103E3F;
 }
 .carousel-control-prev-icon, .carousel-control-next-icon {
     height: 50px;
@@ -61,7 +61,7 @@ nav{
     border: 1px solid black;
 }
 .btn_custom{
-    background-color: #0bc996;
+    background-color: #103E3F;
     color: white;
 }
 @media only screen and (max-width: 1024px) {
@@ -167,7 +167,7 @@ nav{
 }
 .product-grid .social li a:hover{
     color:#fff;
-    background-color:#10cc9a
+    background-color:#103E3F
 }
 .product-grid .social li a:after,
 .product-grid .social li a:before{
@@ -255,7 +255,7 @@ nav{
 }
 .product-grid .title a:hover,
 .product-grid:hover .title a{
-    color:#00EEAD
+    color:#103E3F
 }
 .product-grid .price{
     color:#333;
@@ -328,21 +328,21 @@ nav{
     margin-left: 20px;
     padding: 10px;
     border-radius: 50%;
-    background: #0bc291;
+    background: #103E3F;
     color: white;
 }
 .connec{
     margin-left: 5px;
     padding: 10px;
     border-radius: 50%;
-    background: #0bc291;
+    background: #103E3F;
     color: white;
 }
 .footer_head{
     display: inline-block;
-    color: #0bc291;
+    color: #103E3F;
     padding: 15px 0;
-    border-bottom: 5px solid #0bc291;
+    border-bottom: 5px solid #103E3F;
 }
 .footer_link{
     margin-top: 5px;
@@ -470,7 +470,7 @@ svg {
     width: 110px;
 }
 .cart_head{
-    color: #0eb98c;
+    color: #103E3F;
 }
 .cart_product{
     display: flex;
@@ -567,19 +567,19 @@ input[type="number"] {
     text-align: center;
   }
   .text_green{
-    color: #0BC996;
+    color: #103E3F;
   }
   .cart_design_ico{
       margin-right: 10px;
   }
   .similer_head{
-      background-color: #00EEAD;
+      background-color: #103E3F;
       color: white;
       padding: 10px;
       margin-top: 20px;
   }
   .admin_table{
-      background-color: #00EEAD;
+      background-color: #103E3F;
       color: white;
   }
 @media only screen and (max-width:990px){

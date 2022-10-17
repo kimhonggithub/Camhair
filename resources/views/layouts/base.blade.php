@@ -15,164 +15,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{asset('style.css')}}">
     <link rel="stylesheet" href="{{mix('css/custom.css')}}">
-    @livewireStyles
+    @stack('style_content')
+    <livewire:styles />
     <title>E Commerce</title>
-    <style>
-    main {
-        font-family: "Times New Roman", Times, serif;
-    }
-
-    .masthead {
-        height: 100vh;
-        min-height: 500px;
-        background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        font-family: "Times New Roman", Times, serif;
-    }
-
-
-    .img-5r {
-        opacity: 1;
-        display: block;
-        transition: .5s ease;
-        backface-visibility: hidden;
-    }
-
-    .tx-5 {
-        font-family: "Times New Roman", Times, serif;
-        font-size: 20px;
-    }
-
-    .middle {
-
-        transition: 1s ease;
-        opacity: 0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        text-align: center;
-        text-decoration: none;
-    }
-
-    .hover-img:hover .img-5r {
-        opacity: 0.5;
-    }
-
-    .hover-img:hover .middle {
-        opacity: 1;
-        color: black;
-        font-size: 20px;
-    }
-
-    .middle:hover {
-        text-decoration: underline;
-        color: black;
-    }
-
-    .btn-shop {
-        border-radius: 50px;
-        background-color: #103E3F;
-        border: none;
-        color: #FFFFFF;
-        text-align: center;
-        font-size: 20px;
-        padding: 12px;
-        width: 200px;
-        transition: all 0.5s;
-        cursor: pointer;
-        margin: 5px;
-    }
-
-    .btn-shop span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;
-    }
-
-    .btn-shop span:after {
-        content: '\00bb';
-        position: absolute;
-        opacity: 0;
-        top: 0;
-        right: -20px;
-        transition: 0.5s;
-    }
-
-    .btn-shop:hover span {
-        padding-right: 25px;
-    }
-
-    .btn-shop:hover span:after {
-        opacity: 1;
-        right: 0;
-    }
-
-    /*  */
-    .wrap-see {
-
-        border: none;
-        color: black;
-        text-align: center;
-        font-size: 20px;
-        padding: 12px;
-        width: 200px;
-        transition: all 0.5s;
-        cursor: pointer;
-        margin: 5px;
-    }
-
-    .wrap-see span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;
-    }
-
-    .wrap-see span:after {
-        content: '\00bb';
-        position: absolute;
-        opacity: 0;
-        top: 0;
-        right: -20px;
-        transition: 0.5s;
-    }
-
-    .wrap-see:hover span {
-        padding-right: 25px;
-    }
-
-    .wrap-see:hover span:after {
-        opacity: 1;
-        right: 0;
-    }
-
-    /*  */
-
-    .disc {
-        font-family: "Times New Roman", Times, serif;
-        border-bottom: 3px solid #103E3F;
-        width: fit-content;
-    }
-
-    .disc::before {
-        content: "";
-    }
-
-    .disc::after {
-        position: relative;
-        content: "";
-        width: 50%;
-        display: block;
-        border-bottom: 3px solid #103E3F;
-        top: 8px;
-    }
-    </style>
-
 </head>
 
 <body>
@@ -182,8 +27,9 @@
     <!-- /.navbar -->
     <div class="clear">
     </div>
+    
     <div class="content">
-
+    
         {{$slot}}
     </div>
     @include('layouts.user_partials.footer')

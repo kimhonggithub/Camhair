@@ -1,88 +1,5 @@
-<style>
-* {
-    box-sizing: border-box;
-}
 
-.bg-blog {
-    font-family: "Times New Roman", Times, serif;
-    padding: 20px;
-    background: #f1f1f1;
-}
-
-/* Header/Blog Title */
-/* Create two unequal columns that floats next to each other */
-/* Left column */
-.leftcolumn {
-    float: left;
-    width: 75%;
-}
-
-/* Right column */
-.rightcolumn {
-    float: left;
-    width: 25%;
-    padding-left: 20px;
-}
-
-/* Fake image */
-.fakeimg {
-    background-color: #aaa;
-    width: 100%;
-    padding: 20px;
-}
-
-/* Add a card effect for articles */
-.card {
-    background-color: white;
-    padding: 20px;
-    margin-top: 20px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.btn-toggle-nav a {
-    display: inline-flex;
-    padding: .1875rem .5rem;
-    margin-top: .125rem;
-    margin-left: 1.25rem;
-    text-decoration: none;
-}
-
-.btn-toggle-nav a:hover,
-.btn-toggle-nav a:focus {
-    background-color: #d2f4ea;
-}
-
-/* Footer */
-#intro {
-    /* Margin to fix overlapping fixed navbar */
-    margin-top: 58px;
-}
-
-@media (max-width: 991px) {
-    #intro {
-        /* Margin to fix overlapping fixed navbar */
-        margin-top: 45px;
-    }
-}
-
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 800px) {
-
-    .leftcolumn,
-    .rightcolumn {
-        width: 100%;
-        padding: 0;
-    }
-}
-</style>
-
-<main class="container pt-5">
+<main class="container py-5">
 
 
     <div class="row">
@@ -91,6 +8,9 @@
             <span class="mb-auto">
                 <a href="">Shop/All Product</a>
             </span>
+            <div class="wrap-pagination-info">
+                    {{$products->links()}}
+                </div>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -176,11 +96,7 @@
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                         aria-expanded="false">Category</a>
                     <ul class="dropdown-menu">
-                        @foreach ($categories as $category)
-                        <li><a class="dropdown-item"
-                                href="{{route('product.category',['category_slug'=>$category->slug])}}">{{$category->name}}</a>
-                        </li>
-                        @endforeach
+                    
                         
                         <li><a class="dropdown-item" href="#!">Customize Order</a></li>
                     </ul>
@@ -251,9 +167,7 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="wrap-pagination-info">
-                    {{$products->links()}}
-                </div>
+                
 
             </div>
         </div>
@@ -261,3 +175,89 @@
     </div>
 
 </main>
+
+@push('style_content')
+<style>
+* {
+    box-sizing: border-box;
+}
+
+.bg-blog {
+    font-family: "Times New Roman", Times, serif;
+    padding: 20px;
+    background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+    float: left;
+    width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.btn-toggle-nav a {
+    display: inline-flex;
+    padding: .1875rem .5rem;
+    margin-top: .125rem;
+    margin-left: 1.25rem;
+    text-decoration: none;
+}
+
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+    background-color: #d2f4ea;
+}
+
+/* Footer */
+#intro {
+    /* Margin to fix overlapping fixed navbar */
+    margin-top: 58px;
+}
+
+@media (max-width: 991px) {
+    #intro {
+        /* Margin to fix overlapping fixed navbar */
+        margin-top: 45px;
+    }
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+
+    .leftcolumn,
+    .rightcolumn {
+        width: 100%;
+        padding: 0;
+    }
+}
+</style>
+@endpush

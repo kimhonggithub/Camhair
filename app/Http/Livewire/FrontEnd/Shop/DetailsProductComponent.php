@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\FrontEnd\Shop;
 
 use App\Models\Comment;
 use App\Models\Product;
@@ -60,6 +60,6 @@ class DetailsProductComponent extends Component
         $details_product = Product::where('slug',$this->slug_property)->first();
         $similer_product = Product::where('category_id',$details_product->category_id)->inRandomOrder()->limit(8)->get();
         $allComment = Comment::where('product_slug',$this->slug_property)->get();
-        return view('livewire.details-product-component',['detailsProduct'=>$details_product,'similer_product'=>$similer_product,'allcomment' => $allComment])->layout('layouts.base');
+        return view('livewire.frontend.shop.details-product-component',['detailsProduct'=>$details_product,'similer_product'=>$similer_product,'allcomment' => $allComment])->layout('layouts.base');
     }
 }

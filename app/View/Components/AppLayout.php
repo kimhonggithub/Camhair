@@ -1,7 +1,7 @@
 <?php
 
 namespace App\View\Components;
-
+use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Component;
 
 class AppLayout extends Component
