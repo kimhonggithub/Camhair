@@ -35,29 +35,22 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link ">
-                        <i class="nav-icon fa-solid fa-shop"></i>
+                <li class="nav-item">
+                    <a href="{{ route('admin.category') }}" class="nav-link {{ request()->is('admin/order') ? 'active' : '' }}">
+                    <i class="nav-icon fa-solid fa-bag-shopping"></i>
                         <p>
-                            Product
-                            <i class="right fas fa-angle-left"></i>
+                            Category
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                   
-                        <li class="nav-item">
-                            <a href="{{ route('admin.category') }}" class="nav-link {{ request()->is('admin/categories') ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Category</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.products') }}" class="nav-link {{ request()->is('admin/products') ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Products</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+               
+                <li class="nav-item">
+                    <a href="{{ route('admin.products') }}" class="nav-link {{ request()->is('admin/order') ? 'active' : '' }}">
+                    <i class="nav-icon fa-solid fa-bag-shopping"></i>
+                        <p>
+                            Product
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.order') }}" class="nav-link {{ request()->is('admin/order') ? 'active' : '' }}">
@@ -75,42 +68,6 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('appointments') }}"
-                        class="nav-link {{ request()->is('appointments*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-calendar-alt"></i>
-                        <p>
-                            Appointments
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('messages') }}" class="nav-link {{ request()->is('messages') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-comments"></i>
-                        <p>
-                            Messages
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{ route('settings') }}" class="nav-link {{ request()->is('settings') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-cog"></i>
-                        <p>
-                            Settings
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a x-ref="profileLink" href="{{ route('profile.edit') }}"
-                        class="nav-link {{ request()->is('profile') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            Profile
-                        </p>
-                    </a>
-                </li>
                 <!-- page -->
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link">
@@ -122,9 +79,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/examples/invoice.html" class="nav-link">
+                            <a href="{{route('admin.feedback')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Blog</p>
+                                <p>Feedback Image</p>
                             </a>
                         </li>
                         <li class="nav-item">

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48c2a668ce42ab338e8a60fc90fbdcfa",
+    "content-hash": "464acb6f911f1588fabb22bbfbb12d36",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2223,6 +2223,89 @@
                 }
             ],
             "time": "2022-08-08T13:52:53+00:00"
+        },
+        {
+            "name": "mehdi-fathi/eloquent-filter",
+            "version": "2.6.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mehdi-fathi/eloquent-filter.git",
+                "reference": "a1b607e0812f8a2fb481d906bbb1455d56339493"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mehdi-fathi/eloquent-filter/zipball/a1b607e0812f8a2fb481d906bbb1455d56339493",
+                "reference": "a1b607e0812f8a2fb481d906bbb1455d56339493",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "5.8.*|~6.0|~7.0|~8.0|~9.0",
+                "illuminate/database": "5.8.*|~6.20.14|~7.0|~8.0|~9.0",
+                "illuminate/pagination": "5.8.*|~6.0|~7.0|~8.0|~9.0",
+                "illuminate/support": "5.8.*|~6.0|~7.0|~8.0|~9.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "illuminate/macroable": "^8.0|^9.1.0",
+                "laravel/legacy-factories": "1.0.2|1.0.3|1.0.4|1.0.5|1.1.0|1.3.0",
+                "mockery/mockery": "1.3.*|1.3.*|1.3.*|1.4.x-dev|1.4.x-dev|1.4.2",
+                "orchestra/testbench": "3.7.*|3.8.*|4.*|5.*|^6.0|^6.6.0|^7.0.0",
+                "phpunit/phpunit": "6.*|7.0.*|7.5|8.3|8.5|9.3|^9.5"
+            },
+            "type": "lib",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "eloquentFilter\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "EloquentFilter": "eloquentFilter\\Facade\\EloquentFilter"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "eloquentFilter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mehdi Fathi",
+                    "email": "mehdifathi.developer@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Eloquent Filter adds custom filters automatically to your Eloquent Models in Laravel.It's easy to use and fully dynamic, just with sending the Query Strings to it.",
+            "homepage": "https://github.com/mehdi-fathi/eloquent-filter",
+            "keywords": [
+                "dynamic-filters",
+                "eloquent",
+                "eloquent filter",
+                "filter",
+                "laravel",
+                "laravel filter",
+                "laravel filter multiple parameters",
+                "laravel query filter",
+                "laravel tools",
+                "query",
+                "query-filter",
+                "search"
+            ],
+            "support": {
+                "issues": "https://github.com/mehdi-fathi/eloquent-filter/issues",
+                "source": "https://github.com/mehdi-fathi/eloquent-filter/tree/2.6.7"
+            },
+            "funding": [
+                {
+                    "url": "https://raw.githubusercontent.com/mehdi-fathi/eloquent-filter/master/donate.png",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-09-02T17:29:42+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
