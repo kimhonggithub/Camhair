@@ -118,7 +118,7 @@
                         <tr class="border-bottom">
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <div> <img class="pic" src="{{'image'}}/{{$item->model->image}}"
+                                    <div> <img class="pic" src="{{'image'}}/{{$item->model->product_thumbnail}}"
                                             alt="{{$item->model->name}}"> </div>
                                 </div>
                             </td>

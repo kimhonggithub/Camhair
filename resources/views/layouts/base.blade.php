@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{mix('css/custom.css')}}">
     @stack('style_content')
     <livewire:styles />
-    <title>E Commerce</title>
+    <title>Cambodian Hair Extensions</title>
 </head>
 <body>
     

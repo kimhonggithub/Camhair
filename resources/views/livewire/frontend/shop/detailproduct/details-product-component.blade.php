@@ -1,27 +1,34 @@
-<div >
-    <div class="container my-5 ">
+<div>
+    <div class="container-fluid my-5">
         <div class="card">
             <div class="row g-0">
                 <div class="col-lg-6 border-end">
                     <div class="p-3 d-flex flex-column justify-content-center">
                         <div class="main_image">
-                            <img src="{{asset('image')}}/{{$detailsProduct->image}}" id="main_product_image"
+                            <img src="{{asset('image')}}/{{$detailsProduct->product_thumbnail}}" id="main_product_image"
                                 height="100%">
                         </div>
                         <div class="thumbnail_images">
                             <ul id="thumbnail">
-                                <li><img onclick="changeImage(this)" src="" width="70"></li>
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/w6kEctd.jpg" width="70">
+                                <?php
+                                $proimg = App\Models\ProductImage::where('product_id', $detailsProduct->id)->get();
+                                ?>
+                                <li>
+                                    <img onclick="changeImage(this)"
+                                        src="{{asset('image')}}/{{$detailsProduct->product_thumbnail}}" width="70">
                                 </li>
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/L7hFD8X.jpg" width="70">
+                                @foreach($proimg as $pimage )
+
+                                <li>
+                                    <img onclick="changeImage(this)"
+                                        src="{{asset('image/all')}}/{{$pimage->image_name}}" width="70">
                                 </li>
-                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/6ZufmNS.jpg" width="70">
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 ">
                     <div class="p-3 right-side">
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="fs-1">{{$detailsProduct->name}}</p>
@@ -30,98 +37,68 @@
 
                         </div>
                         <div class="fs-5 mb-3">
-                            Avalablity : <span class="text-success fw-bolder">{{$detailsProduct->stock_status}}</span>
+                            <div class=""> Avalablity : <span
+                                    class="text-success fw-bolder">{{$detailsProduct->stock_status}}</span></div>
+                            @if($detailsProduct->discount == '0')
+
+                            @else
+                            <div class=""> Discount : <span class="text-success fw-bolder">{{$detailsProduct->discount}}
+                                    %</span></div>
+                            @endif
+
                         </div>
 
                         <!-- <h3 class="fw-bolder"></h3> -->
                         <!-- <div class="ratings d-flex flex-row align-items-center">
                             <span>441 reviews</span>
                         </div> -->
-                        <table class="table ">
-                            <thead>
-                                <tr class="text-uppercase table-dark text-center">
-                                    <th scope="col">Pattern</th>
-                                    <th scope="col">Luster</th>
-                                    <th scope="col">Color</th>
-                                    <th scope="col">Lenght</th>
-                                    <th scope="col">Price</th>
+                        <div class="table-responsive-xl">
+                            <table class="table">
 
-                                </tr>
-                            </thead>
+                                <thead>
+                                    <tr class="fs-5">
+                                        <th scope="col">Pattern</th>
+                                        <th scope="col">Luster</th>
+                                        <th scope="col">Color</th>
+                                        <th scope="col">Lenght</th>
 
-                            <tbody>
-                                <tr class="text-uppercase table-active text-center">
-                                    <td class="fs-5">{{$detailsProduct->patterns->name}}</td>
-                                    <td class="fs-5">{{$detailsProduct->Luster}}</td>
-                                    <td class="fs-5">{{$detailsProduct->Colors->color_rang}}</td>
-                                    <td class="fs-5">{{$detailsProduct->Lenght}}"</td>
-                                    <td class="fw-bolder fs-5">${{$detailsProduct->sale_price}}</td>
-                                </tr>
+                                        @if( is_null($detailsProduct->wigcaps) )
 
-                            </tbody>
-                        </table>
+                                        @else
+                                        <th scope="col">Wigcap</th>
+                                        @endif
+                                        <th scope="col">Price</th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="fs-5">{{$detailsProduct->patterns->name}}</th>
+                                        <td class="fs-5">{{$detailsProduct->Luster}}</td>
+                                        <td class="fs-5">{{$detailsProduct->Colors->color_rang}}</td>
+                                        <td class="fs-5">{{$detailsProduct->lenghts->values}}"</td>
+                                        @if( is_null($detailsProduct->wigcaps) )
+
+                                        @else
+                                        <td class="fs-5">{{$detailsProduct->wigcaps->name}}</td>
+                                        @endif
+                                        <td class="fw-bolder fs-5">${{$detailsProduct->sale_price}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="buttons d-flex flex-row mt-5 gap-3">
+                       
                             <button wire:click.prevent="checkout()" class="btn btn-outline-dark">Buy
                                 Now</button>
+                       
                             <button
                                 wire:click.prevent="store({{$detailsProduct->id}},'{{$detailsProduct->name}}',{{$detailsProduct->sale_price}})"
                                 class="btn btn-dark"><i class="fas fa-shopping-cart cart_design_ico"></i>Add to
                                 Basket</button>
 
                         </div>
-                        <!-- <div class="accordion accordion-flush" style="cursor: pointer;" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <a class="accordion-button collapsed text-dark text-uppercase text-decoration-none border-bottom border-2 "
-                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                        aria-controls="collapseTwo">
-                                        Description
-                                    </a>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <strong>{{$detailsProduct->description}}</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-
-
-
-
-
-
-                        <!-- <div class="mt-3 pr-3 content ">
-                            <h6 class="text_green fw-bolder fs-4">Short description:</h6>
-                            <p><p >{{$detailsProduct->short_description}}</p></p>
-                            <h6 class="text_green fw-bolder fs-4">Description:</h6>
-                            {{$detailsProduct->description}}</p>
-                        </div>
-                        <div class="fs-5">
-                            Avalablity : <span class="text-success fw-bolder">{{$detailsProduct->stock_status}}</span>
-                        </div>
-                        <div class="mt-2"> <span class="fw-bold">Color</span>
-                            <div class="colors">
-                                <ul id="marker">
-                                    <li id="marker-1"></li>
-                                    <li id="marker-2"></li>
-                                    <li id="marker-3"></li>
-                                    <li id="marker-4"></li>
-                                    <li id="marker-5"></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="buttons d-flex flex-row mt-5 gap-3">
-                            <button wire:click.prevent = "checkout()" class="btn btn-outline-dark">Buy
-                                Now</button>
-                            <button
-                                wire:click.prevent="store({{$detailsProduct->id}},'{{$detailsProduct->name}}',{{$detailsProduct->sale_price}})"
-                                class="btn btn-dark"><i class="fas fa-shopping-cart cart_design_ico"></i>Add to
-                                Basket</button>
-
-                        </div> -->
-
                     </div>
                 </div>
             </div>
@@ -134,10 +111,9 @@
 
                     <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab"
                         data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
-                        aria-selected="false">Profile</button>
+                        aria-selected="false">Description</button>
                     <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                        type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
-
+                        type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Comments</button>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
@@ -186,14 +162,14 @@
     </div>
     <div class="container">
         <!-- <h4 class="similer_head">Similer Products:</h4> -->
-        <h4 class="fs-3 text-center my-5 text-uppercase fw-bolder text-success">Related products</h4>
+        <h4 class="fs-3 text-center my-5 text-uppercase fw-bolder text-success">Related products in field Category</h4>
         <div class="row">
             @foreach ($similer_product as $product_similer)
             <div class="col-md-3 col-sm-6">
                 <div class="product-grid">
                     <div class="product-image">
                         <a href="{{route('product.details',['slug'=>$product_similer->slug])}}">
-                            <img class="pic-1" src="{{asset('image')}}/{{$product_similer->image}}">
+                            <img class="pic-1" src="{{asset('image')}}/{{$product_similer->product_thumbnail}}">
                         </a>
                         <ul class="social">
                             <li><a href="{{route('product.details',['slug'=>$product_similer->slug])}}"
@@ -204,7 +180,7 @@
                                     data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                         <span class="product-new-label">{{$product_similer->stock_status}}</span>
-                        <span class="product-discount-label">20%</span>
+                        <span class="product-discount-label">{{$product_similer->discount}}%</span>
                     </div>
                     <div class="product-content">
                         <h3 class="title"><a
@@ -220,6 +196,40 @@
             </div>
             @endforeach
         </div>
+        <!-- <h4 class="fs-3 text-center my-5 text-uppercase fw-bolder text-success">Related products in field pattern</h4>
+        <div class="row">
+            @foreach ($similer_product_bypattern as $product_similer_pattern)
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="{{route('product.details',['slug'=>$product_similer->slug])}}">
+                            <img class="pic-1" src="{{asset('image')}}/{{$product_similer_pattern->product_thumbnail}}">
+                        </a>
+                        <ul class="social">
+                            <li><a href="{{route('product.details',['slug'=>$product_similer_pattern->slug])}}"
+                                    data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                            <li><a href="{{route('product.details',['slug'=>$product_similer_pattern->slug])}}"
+                                    data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                            <li><a href="{{route('product.details',['slug'=>$product_similer_pattern->slug])}}"
+                                    data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                        <span class="product-new-label">{{$product_similer_pattern->stock_status}}</span>
+                        <span class="product-discount-label">{{$product_similer_pattern->discount}}%</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a
+                                href="{{route('product.details',['slug'=>$product_similer_pattern->slug])}}">{{$product_similer_pattern->name}}</a>
+                        </h3>
+                        <div class="price">${{$product_similer->sale_price}}
+                            <span>${{$product_similer->reguler_price}}</span>
+                        </div>
+                        <a class="add-to-cart" href="{{route('product.details',['slug'=>$product_similer->slug])}}">+
+                            Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div> -->
     </div>
 </div>
 
@@ -271,20 +281,7 @@
     transition: all .2s ease-in-out;
 }
 
-/* .nav .nav-item>a {
-    text-decoration: none;
-    color: #103E3F;
-    letter-spacing: 1px;
-}
 
-.nav .nav-item>a.active,
-.nav .nav-item>a:hover,
-.nav .nav-item>a:focus {
-    color: red;
-    border-bottom: #263f55 2px solid;
-    color: #ff284c76;
-
-} */
 
 .heart:hover {
     transform: scale(1.5);

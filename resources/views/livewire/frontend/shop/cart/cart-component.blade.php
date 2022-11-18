@@ -23,7 +23,7 @@
     </div>
     @if(Cart::count() > 0)
     <div class="row px-md-4 px-2 pt-4">
-        
+
         <div class="col-lg-8">
             <p class="pb-2 fw-bold">Product</p>
             <div class="card">
@@ -35,21 +35,29 @@
                                 <tr class="border-bottom">
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div> <img class="pic" src="{{'image'}}/{{$item->model->image}}"
+                                            <div> <img class="pic" src="{{'image'}}/{{$item->model->product_thumbnail}}"
                                                     alt="{{$item->model->name}}"> </div>
                                             <div class="ps-3 d-flex flex-column justify-content">
-                                                <p class="fw-bold">{{$item->model->name}}</p> <small class=" d-flex">
-                                                    <span class=" text-muted">Color:</span> <span
-                                                        class=" fw-bold">Red/White</span> </small> <small class="">
-                                                    <span class=" text-muted">Size:</span> <span
-                                                        class=" fw-bold">L</span> </small>
+                                                <p class="fw-bold">{{$item->model->name}}</p>
+                                                <small class=" d-flex">
+                                                    <span class=" text-muted">Color:</span>
+                                                    <span class=" fw-bold">{{$item->model->colors->color_rang}}</span>
+                                                </small>
+                                                <small class="">
+                                                @if(is_null($item->model->sizevalue))
+                                                @else
+                                                    <span class=" text-muted">Size:</span>
+                                                    <span class=" fw-bold">{{$item->model->sizevalue->value_sizes}} </span>
+                                                @endif
+                                                   
+                                                </small>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex">
                                             <p class="pe-3"><span class="red">${{$item->subtotal()}}</span></p>
-                                            <p class="text-muted text-decoration-line-through">$55.00</p>
+                                            <!-- <p class="text-muted text-decoration-line-through">$55.00</p> -->
                                         </div>
                                     </td>
                                     <td>
@@ -58,9 +66,9 @@
                                                 class="pe-3 fw-bolder fs-5"><input class="ps-2" type="number"
                                                     value="{{$item->qty}}" aria-label="Disabled input example"
                                                     disabled></span>
-                                            
+
                                             <a class="round" href=""
-                                wire:click.prevent="delete_cart_item('{{$item->rowId}}')"><i
+                                                wire:click.prevent="delete_cart_item('{{$item->rowId}}')"><i
                                                     class="fa-solid fa-trash"></i></a>
                                         </div>
                                     </td>
@@ -97,7 +105,7 @@
                 </div>
             </div>
             <hr class="my-4">
-            <a class="w-100 btn btn-primary btn-lg"  wire:click.prevent="checkout()">Continue to checkout</a>
+            <a class="w-100 btn btn-primary btn-lg" wire:click.prevent="checkout()">Continue to checkout</a>
         </div>
 
     </div>

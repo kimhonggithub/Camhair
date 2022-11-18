@@ -22,10 +22,7 @@
                     <a class="nav-link {{request() -> is('contact')? 'active' : ''}}"
                         href="{{route('contact')}}">Contact</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {{request() -> is('order')? 'active' : ''}}"
-                        href="{{route('customize.order')}}">Customize Order</a>
-                </li>
+              
                 <li class="nav-item">
                     <a class="nav-link {{request() -> is('order')? 'active' : ''}}" href="{{route('product.cart')}}"><i
                             class="fas fa-shopping-cart"></i><sup>{{Cart::count()}}</sup></a>
@@ -128,10 +125,7 @@
                                 href="{{route('blog')}}">Blog</a>
 
                         </li>
-                        <li>
-                            <a class="dropdown-item {{request() -> is('order')? 'active' : ''}}"
-                                href="{{route('customize.order')}}">Customize Order</a>
-                        </li>
+                       
                     </ul>
                 </div>
 
@@ -157,69 +151,69 @@
 </nav> -->
 
 <style>
-@media screen and (max-width: 600px) {
-    .topnav a:not(:first-child) {
-        display: none;
+    @media screen and (max-width: 600px) {
+        .topnav a:not(:first-child) {
+            display: none;
+        }
+
+        .topnav a.icon {
+            float: right;
+            display: block;
+        }
     }
 
-    .topnav a.icon {
-        float: right;
-        display: block;
-    }
-}
+    @media screen and (max-width: 600px) {
+        .topnav.responsive {
+            position: relative;
+        }
 
-@media screen and (max-width: 600px) {
-    .topnav.responsive {
-        position: relative;
-    }
+        .topnav.responsive .icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
 
-    .topnav.responsive .icon {
-        position: absolute;
-        right: 0;
-        top: 0;
+        .topnav.responsive a {
+            float: none;
+            display: block;
+            text-align: left;
+        }
     }
-
-    .topnav.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-}
 </style>
 <nav class="navbar smart-scroll navbar-expand-lg navbar-light bg-light">
     <div class="container ">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav mr-auto">
                 <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-bars"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li>
-                            <a class=" dropdown-item {{request() -> is('/')? 'active' : ''}}" aria-current="page"
-                                href="/">Home</a>
+                            <a class=" dropdown-item {{request() -> is('/')? 'active' : ''}}" aria-current="page" href="/">Home</a>
                         </li>
                         <li>
-                            <a class="dropdown-item {{request() -> is('shop')? 'active' : ''}}"
-                                href="{{route('shopping')}}">Shop</a>
+                            <a class="dropdown-item {{request() -> is('/allproducts')? 'active' : ''}}" href="{{route('allproducts')}}">All Products</a>
                         </li>
                         <li>
-                            <a class="dropdown-item {{request() -> is('blog')? 'active' : ''}}"
-                                href="{{route('blog')}}">Blog</a>
+                            <a class="dropdown-item {{request() -> is('shop')? 'active' : ''}}" href="{{route('shopping')}}">Shop</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item {{request() -> is('blog')? 'active' : ''}}" href="{{route('blog')}}">Blog</a>
 
                         </li>
                         <li>
-                            <a class="dropdown-item {{request() -> is('order')? 'active' : ''}}"
-                                href="{{route('customize.order')}}">Customize Order</a>
+                            <a class="dropdown-item {{request() -> is('about-us')? 'active' : ''}}" href="{{route('about-us')}}">About Us</a>
                         </li>
                         <li>
-
+                            <a class="dropdown-item {{request() -> is('terms-conditions')? 'active' : ''}}" href="{{route('termsCod')}}">Terms and Conditions</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item {{request() -> is('/customize/order')? 'active' : ''}}" href="{{route('customize.order')}}">Customize Order</a>
                         </li>
 
                     </ul>
@@ -235,9 +229,9 @@
         <div class="navbar-nav ms-auto">
 
             <a class="position-relative text-dark  nav-link {{request() -> is('order')? 'active' : ''}}" href="{{route('product.cart')}}">
-            <i class="fa-solid fa-bag-shopping fa-2x"></i>
+                <i class="fa-solid fa-bag-shopping fa-2x"></i>
                 <span class="position-absolute fa-1x start-100 translate-middle badge rounded-pill bg-danger">
-                {{Cart::count()}}
+                    {{Cart::count()}}
                 </span>
             </a>
         </div>
@@ -248,10 +242,8 @@
                 @auth
                 @if(Auth::user()->utype === 'ADM')
                 <div class="dropdown">
-                    <a class="dropdown-toggle log_in_link " href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
-                            class="rounded-circle" height="35" />
+                    <a class="dropdown-toggle log_in_link " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="rounded-circle" height="35" />
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -261,8 +253,7 @@
                         <li><a class="dropdown-item" href="{{ route('admin.slider') }}">Slider</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.order') }}">Order</a></li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log
                                 Out</a>
                             <form id="logout-form" method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -273,22 +264,20 @@
                 </div>
                 @else
                 <div class="dropdown">
-                    <a class="dropdown-toggle log_in_link " href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
-                            class="rounded-circle" height="35" />
+                    <a class="dropdown-toggle log_in_link " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="rounded-circle" height="35" />
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li><a class="dropdown-item" href="{{ route('user.dashboard') }}">Dashboard</a></li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Log
                                 Out</a>
                             <form id="logout-form" method="POST" action="{{ route('logout') }}">
                                 @csrf
                             </form>
                         </li>
+
 
                     </ul>
                 </div>

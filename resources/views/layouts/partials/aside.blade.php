@@ -1,3 +1,5 @@
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -36,30 +38,46 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.category') }}" class="nav-link {{ request()->is('admin/order') ? 'active' : '' }}">
-                    <i class="nav-icon fa-solid fa-bag-shopping"></i>
+                    <a href="{{ route('admin.category') }}"
+                        class="nav-link {{ request()->is('admin/categories*') ? 'active' : '' }}">
+                        <i class="nav-icon fa-solid fa-border-all"></i>
                         <p>
                             Category
                         </p>
                     </a>
                 </li>
-               
                 <li class="nav-item">
-                    <a href="{{ route('admin.products') }}" class="nav-link {{ request()->is('admin/order') ? 'active' : '' }}">
-                    <i class="nav-icon fa-solid fa-bag-shopping"></i>
+                    <a href="{{ route('admin.subcategory') }}"
+                        class="nav-link {{ request()->is('admin/subcategory*') ? 'active' : '' }}">
+                        <i class="nav-icon fa-solid fa-square-plus"></i>
+                        <p>
+                            Subcategory
+                        </p>
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.products') }}"
+                        class="nav-link {{ request()->is('admin/products*') ? 'active' : '' }}">
+                        <i class="nav-icon fa-sharp fa-solid fa-store"></i>
                         <p>
                             Product
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.order') }}" class="nav-link {{ request()->is('admin/order') ? 'active' : '' }}">
-                    <i class="nav-icon fa-solid fa-bag-shopping"></i>
+                    <a href="{{ route('admin.order') }}"
+                        class="nav-link {{ request()->is('admin/order') ? 'active' : '' }}">
+                        <i class="nav-icon fa-solid fa-bag-shopping"></i>
                         <p>
                             Order
+                            <span class="right badge badge-danger">New</span>
                         </p>
                     </a>
                 </li>
+
+
                 <li class="nav-item">
                     <a href="{{ route('users') }}" class="nav-link {{ request()->is('users') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
@@ -68,37 +86,37 @@
                         </p>
                     </a>
                 </li>
-                <!-- page -->
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
+                <li class="nav-item has-treeview {{ request()->is('admin/slider') ? 'menu-open' : '' }} {{ request()->is('admin/feedback') ? 'menu-open' : ''}}">
+                    <a href="#" class="nav-link  {{ request()->is('admin/slider') ? 'active' : '' }} {{ request()->is('admin/feedback') ? 'active' : ''}}">
+                    <i class="fa-solid fa-file nav-icon"></i>
                         <p>
                             Pages
-                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('admin.feedback')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                        <li class="nav-item pl-2">
+                            <a href="{{route('admin.feedback')}}" class="nav-link {{ request()->is('admin/feedback') ? 'active' : '' }}">
+                                <i class="nav-icon fa-sharp fa-solid fa-bullhorn"></i>
                                 <p>Feedback Image</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.slider') }}" class="nav-link {{ request()->is('admin/slider') ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
+                        <li class="nav-item pl-2">
+                            <a href="{{ route('admin.slider') }}"
+                                class="nav-link {{ request()->is('admin/slider') ? 'active' : '' }}">
+                                <i class="fa-regular fa-images nav-icon"></i>
                                 <p>Slide</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-
-                            <a href="/" class="nav-link">
+                        <li class="nav-item pl-2">
+                            <a href="/"
+                                class="nav-link">
                                 <i class="nav-icon fa-solid fa-eye"></i>
                                 <p>
-                                    Preview
+                                Preview
                                 </p>
                             </a>
                         </li>
+                       
                     </ul>
                 </li>
                 <li class="nav-item">

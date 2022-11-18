@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire\Admin\Order;
 
+use App\Http\Livewire\Admin\AdminComponent;
 use App\Models\OrderItem;
 use App\Models\Transaction;
-use Livewire\Component;
 
-class AdminOrderDetailsComponent extends Component
+
+class AdminOrderDetailsComponent extends AdminComponent
 {
     public $orderId;
     public function mount($id)

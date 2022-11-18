@@ -1,14 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900|Rubik:300,400,500,700,900);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-.contact_page {
-  /*********************************
-  4.1 Contact Form
-  *********************************/
-  /* .contact_form_container
-  {
 
-  } */
-}
 .contact_page * {
   -webkit-font-smoothing: antialiased;
   -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;

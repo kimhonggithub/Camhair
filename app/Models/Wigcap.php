@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Wigcap extends Model
 {
     use HasFactory;
+    protected $table = "wigcaps";
 }

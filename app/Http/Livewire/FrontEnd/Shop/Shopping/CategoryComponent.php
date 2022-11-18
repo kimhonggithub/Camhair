@@ -4,6 +4,10 @@ namespace App\Http\Livewire\FrontEnd\Shop\Shopping;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Colors;
+use App\Models\Lenght;
+use App\Models\Patterns;
+use Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Cart;
@@ -25,7 +29,17 @@ class CategoryComponent extends Component
         session()->flash('success_massage','Item added succesfully');
         return redirect()->route('product.cart');
     }
-    
+    public function checkout()
+    {
+        if(Auth::check())
+        {
+            return redirect()->route('checkout');
+        }
+        else
+        {
+            return redirect()->route('login');
+        }
+    }
     use WithPagination;
     public function render()
     {
@@ -42,14 +56,22 @@ class CategoryComponent extends Component
             $products = Product::where('category_id',$category_id)->orderBy('sale_price','DESC')-> paginate($this->pagesize);
         }
         else{
-            $products = Product::where('category_id',$category_id)->paginate($this->pagesize);
+            $products = Product::where('category_id',$category_id)
+          
+            ->paginate($this->pagesize);
         }
 
         $categories = Category::all();
+        $patterns = Patterns::all();
+        $colors = Colors::all();
+        $lenghts = Lenght::all();
         return view('livewire.frontend.shop.shopping.category-component',[
             'products'=>$products,
             'categories'=>$categories,
-            'category_name'=>$category_name
+            'category_name'=>$category_name,
+            'patterns' => $patterns,
+            'colors' => $colors,
+            'lenghts' => $lenghts
             ])->layout('layouts.base');
     }
 }

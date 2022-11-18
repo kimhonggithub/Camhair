@@ -45,7 +45,7 @@
     @foreach($orderdetails as $orderdetail)
         <tr>
             <th scope="row">{{$orderdetail->id}}</th>
-            <td><img src="{{asset('image')}}/{{$orderdetail->product->image}}" alt="" width="60" height="60"></td>
+            <td><img src="{{asset('image')}}/{{$orderdetail->product->product_thumbnail}}" alt="" width="60" height="60"></td>
             <td>{{$orderdetail->order_id}}</td>
             <td>${{$orderdetail->price}}</td>
             <td>{{$orderdetail->quantity}}</td>

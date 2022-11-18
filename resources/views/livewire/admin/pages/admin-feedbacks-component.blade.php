@@ -64,7 +64,7 @@
                                                 <i class="fa fa-edit mr-2"></i>
                                             </a>
 
-                                            <a href="" wire:click.prevent="">
+                                            <a href="" wire:click.prevent="confirmfeedbackRemoval({{ $feedback->id }})">
                                                 <i class="fa fa-trash text-danger"></i>
                                             </a>
                                         </td>
@@ -186,7 +186,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
                             class="fa fa-times mr-1"></i> Cancel</button>
-                    <button type="button" wire:click.prevent="deletefeeback" class="btn btn-danger"><i
+                    <button type="button" wire:click.prevent="deletefeedback" class="btn btn-danger"><i
                             class="fa fa-trash mr-1"></i>Delete Feedback</button>
                 </div>
             </div>

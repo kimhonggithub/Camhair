@@ -34,10 +34,10 @@
         </div>
         <div class="carousel-inner">
             @foreach ($slider as $slide)
-            <div class="carousel-item {{$slide->id == 1?'active':''}} custom_cur" data-bs-interval="2000">
+            <div class="carousel-item {{$slide->id == 1?'active':''}} custom_cur" data-bs-interval="1900">
                 <div class=" bg-dark text-white">
                     <img src="{{asset('image/slider')}}/{{$slide->slider_image}}" style="animation:slideDown  2s ;"
-                        class="img-fluid">
+                        class="img"  width="100%" height="650">
                     <div class="row justify-content-center">
                         <div class="card-img-overlay">
                             <div class="desc_ban">
@@ -51,9 +51,9 @@
                                     </p>
                                     <h2 class="f-family " style="animation: translateX 1s;">${{$slide->price}}</h2>
                                     <!-- btn -->
-                                    <!-- <a href="/skincare" class="btn btn-light py-1 px-2 fs-3">Shop Now</a> -->
+                                    <a type="button" href="{{$slide->link}}" class="btn btn-light py-1 px-2 fs-3" style="animation: translateX 2s;">Shop Now</a>
 
-                                    <a type="button" class="btn btn_custom btn-lg" href="{{$slide->link}}">Buy Now</a>
+                                    <!-- <a type="button" class="btn btn_custom btn-lg" href="{{$slide->link}}">Buy Now</a> -->
                             </div>
                         </div>
                     </div>
@@ -96,6 +96,7 @@
             </div>
         </div>
     </div>
+    
     
 
 </div>

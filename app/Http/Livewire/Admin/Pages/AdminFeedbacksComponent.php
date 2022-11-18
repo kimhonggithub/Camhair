@@ -49,7 +49,7 @@ class AdminFeedbacksComponent extends AdminComponent
         $this->slider_image -> storeAs('feedback',$imagename);
         $feedabck->slider_image = $imagename;
         $feedabck->save();
-        $this->dispatchBrowserEvent('hide-form', ['message' => 'Add feedabck successfully!']);
+        $this->dispatchBrowserEvent('hide-form', ['message' => 'Add feedback successfully!']);
     }
     public function confirmfeedbackRemoval($feedback_id)
 	{
